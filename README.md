@@ -1,4 +1,4 @@
-#Docker环境的搭建
+# Docker环境的搭建
 
 # 1.安装Mysql
 
@@ -6,7 +6,7 @@
 docker run --name mysql -p 3307:3306 -e MYSQL_ROOT_PASSWORD=Abc1234?? -d mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
 
-#2.Redis安装
+# 2.Redis安装
 
 ```
 docker run --name redis -p 6380:6379 -d redis
