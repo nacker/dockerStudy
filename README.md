@@ -1,12 +1,31 @@
-# Docker环境的搭建
+#Docker环境的搭建
 
-# 1.安装Mysql
+# 1.Docker环境安装
+```
+安装yum-utils
+yum install -y yum-utils device-mapper-persistent-data lvm2
+为yum源添加docker仓库位置：
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+安装docker：
+yum install docker-ce
+启动docker：
+systemctl start docker
+```
+
+# 2.Nginx安装
+```
+docker pull nginx:1.10
+
+docker run -d -p 8080:80 -v /data/nginx.conf:/etc/nginx/nginx.conf nginx:1.10
+```
+
+# 3.安装Mysql
 
 ```shell
 docker run --name mysql -p 3307:3306 -e MYSQL_ROOT_PASSWORD=Abc1234?? -d mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
 
-# 2.Redis安装
+#4.Redis安装
 
 ```
 docker run --name redis -p 6380:6379 -d redis
@@ -22,7 +41,7 @@ cd /usr/local/bin
 CONFIG SET requirepass Abc1234??
 ```
 
-# 3.安装MongoDB
+# 5.安装MongoDB
 
 ```
 docker run --name mongo -p 27017:27017 -d mongo --auth
@@ -33,13 +52,13 @@ docker -exec -it mongo mongo admin
 db.createUser({ user:'admin',pwd:'123456',roles:[ { role:'userAdminAnyDatabase', db: 'admin'}]});
 ```
 
-# 4.Nacos-Server
+# 6.Nacos-Server
 
 ```
 docker run --name nacos -e MODE=standalone -p 8848:8848 -d nacos/nacos-server:1.1.4
 ```
 
-# 5.Sentinel-Dashboard
+# 7.Sentinel-Dashboard
 
 ```
 docker run --name sentinel  -p 8858:8858 -d  bladex/sentinel-dashboard
@@ -50,3 +69,5 @@ http://127.0.0.1:8858/
 sentinel
 sentinel
 ```
+
+
