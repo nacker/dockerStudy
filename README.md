@@ -69,5 +69,21 @@ http://127.0.0.1:8858/
 sentinel
 sentinel
 ```
+# 8.gogs
+```
+docker pull gogs/gogs
+mkdir -p /var/gogs
+docker run --name=gogs -d  -p 10022:22 -p 10080:3000 -v /var/gogs:/data gogs/gogs
+```
 
+```
+参数说明:
+-d: 后台方式运行容器
+-p: 端口映射, 将容器的22端口映射到宿主机的10022端口, 将容器的3000端口映射到宿主机的10080端口
+–name: 指定容器名称
+-v: 数据卷挂载, 用于将容器和数据分离
+
+http://宿主机ip:10080
+如: http://localhost:10080
+```
 
