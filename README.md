@@ -74,6 +74,9 @@ sentinel
 docker pull gogs/gogs
 mkdir -p /var/gogs
 docker run --name=gogs -d  -p 10022:22 -p 10080:3000 -v /var/gogs:/data gogs/gogs
+
+mac
+docker run -d -p 10022:22 -p 10088:3000 --name=gogs --net=backend -v /var/gogs/:/data gogs/gogs
 ```
 
 ```
