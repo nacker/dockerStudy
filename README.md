@@ -71,9 +71,17 @@ sentinel
 ```
 # 8.gogs
 ```
-docker pull gogs/gogs
-mkdir -p /var/gogs
-docker run --name=gogs -d  -p 10022:22 -p 10080:3000 -v /var/gogs:/data gogs/gogs
+# Pull image from Docker Hub.
+$ docker pull gogs/gogs
+
+# Create local directory for volume.
+$ mkdir -p /var/gogs
+
+# Use `docker run` for the first time.
+$ docker run --name=gogs -p 10022:22 -p 10880:3000 -v /var/gogs:/data gogs/gogs
+
+# Use `docker start` if you have stopped it.
+$ docker start gogs
 
 mac
 docker run -d -p 10022:22 -p 10088:3000 --name=gogs --net=backend -v /var/gogs/:/data gogs/gogs
